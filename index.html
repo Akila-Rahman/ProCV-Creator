@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resume Builder</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container mt-5">
+        <h2 class="text-center">Resume Builder</h2>
+        <form id="resumeForm">
+            <div class="mb-3">
+                <label for="name" class="form-label">Full Name</label>
+                <input type="text" class="form-control" id="name" required>
+            </div>
+            <div class="mb-3">
+                <label for="email" class="form-label">Email</label>
+                <input type="email" class="form-control" id="email" required>
+            </div>
+            <div class="mb-3">
+                <label for="phone" class="form-label">Phone</label>
+                <input type="tel" class="form-control" id="phone" required>
+            </div>
+            <div class="mb-3">
+                <label for="education" class="form-label">Education</label>
+                <textarea class="form-control" id="education" required></textarea>
+            </div>
+            <div class="mb-3">
+                <label for="experience" class="form-label">Experience</label>
+                <textarea class="form-control" id="experience"></textarea>
+            </div>
+            <div class="mb-3">
+                <label for="skills" class="form-label">Skills</label>
+                <textarea class="form-control" id="skills" required></textarea>
+            </div>
+            <button type="button" class="btn btn-primary" onclick="generateResume()">Generate Resume</button>
+        </form>
+        
+        <div id="resumePreview" class="mt-5 border p-3">
+            <h3 id="previewName"></h3>
+            <p><strong>Email:</strong> <span id="previewEmail"></span></p>
+            <p><strong>Phone:</strong> <span id="previewPhone"></span></p>
+            <h4>Education</h4>
+            <p id="previewEducation"></p>
+            <h4>Experience</h4>
+            <p id="previewExperience"></p>
+            <h4>Skills</h4>
+            <p id="previewSkills"></p>
+        </div>
+        <button id="downloadPDF" class="btn btn-success mt-3" onclick="downloadPDF()">Download PDF</button>
+        <button id="downloadDOC" class="btn btn-info mt-3" onclick="downloadDOC()">Download DOC</button>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>

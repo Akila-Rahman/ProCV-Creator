@@ -7,9 +7,19 @@ function generateResume() {
     document.getElementById("previewSkills").innerText = document.getElementById("skills").value;
 }
 
+document.addEventListener("DOMContentLoaded", function() {
+    const script = document.createElement("script");
+    script.src = "https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js";
+    script.onload = () => console.log("html2pdf loaded");
+    document.body.appendChild(script);
+});
+
 function downloadPDF() {
-    const element = document.getElementById("resumePreview");
-    html2pdf().from(element).save("resume.pdf");
+    generateResume(); // Ensure content is updated
+    setTimeout(() => {
+        const element = document.getElementById("resumePreview");
+        html2pdf().from(element).save("resume.pdf");
+    }, 500); // Delay to allow DOM update
 }
 
 function downloadDOC() {

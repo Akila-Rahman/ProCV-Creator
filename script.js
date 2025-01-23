@@ -15,11 +15,27 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 
 function downloadPDF() {
-    generateResume(); // Ensure content is updated
+    generateResume(); // Ensure latest content is updated
+    
     setTimeout(() => {
         const element = document.getElementById("resumePreview");
-        html2pdf().from(element).save("resume.pdf");
-    }, 500); // Delay to allow DOM update
+        console.log(element.innerHTML); // Debugging output
+        
+        if (!element || element.innerHTML.trim() === "") {
+            alert("Resume preview is empty. Please fill out the form first.");
+            return;
+        }
+
+        const opt = {
+            margin: 10,
+            filename: 'resume.pdf',
+            image: { type: 'jpeg', quality: 0.98 },
+            html2canvas: { scale: 2, useCORS: true },
+            jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
+        };
+
+        html2pdf().set(opt).from(element).save();
+    }, 500); // Short delay to ensure content updates
 }
 
 function downloadDOC() {
